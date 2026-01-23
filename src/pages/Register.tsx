@@ -24,7 +24,24 @@ const Register: React.FC = () => {
       await register(formData)
       navigate('/login')
     } catch (err: any) {
-      const errorMessage = err.response?.data?.detail || err.response?.data?.non_field_errors?.[0] || 'Ошибка регистрации'
+      let errorMessage = 'Ошибка регистрации'
+      if (err.response?.data) {
+        const data = err.response.data
+        if (data.detail) {
+          errorMessage = data.detail
+        } else if (data.non_field_errors?.[0]) {
+          errorMessage = data.non_field_errors[0]
+        } else {
+          // Field errors
+          const fieldErrors = []
+          if (data.email) fieldErrors.push(`Email: ${data.email[0]}`)
+          if (data.username) fieldErrors.push(`Имя пользователя: ${data.username[0]}`)
+          if (data.password) fieldErrors.push(`Пароль: ${data.password[0]}`)
+          if (fieldErrors.length > 0) {
+            errorMessage = fieldErrors.join('; ')
+          }
+        }
+      }
       setError(errorMessage)
     }
   }

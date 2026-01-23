@@ -15,7 +15,14 @@ const Login: React.FC = () => {
       await login(formData)
       navigate('/')
     } catch (err: any) {
-      const errorMessage = err.response?.data?.detail || err.response?.data?.non_field_errors?.[0] || 'Неверные данные'
+      let errorMessage = 'Ошибка входа'
+      if (err.response?.status === 401) {
+        errorMessage = 'Неверный логин или пароль'
+      } else if (err.response?.data?.detail) {
+        errorMessage = err.response.data.detail
+      } else if (err.response?.data?.non_field_errors?.[0]) {
+        errorMessage = err.response.data.non_field_errors[0]
+      }
       setError(errorMessage)
     }
   }

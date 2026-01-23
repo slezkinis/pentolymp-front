@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { FaCheck, FaLightbulb } from 'react-icons/fa'
+import Confetti from 'react-confetti'
 import { getTask, checkAnswer, getTip, Task, Tip, CheckAnswerResponse } from '../api/tasks'
 
 const TaskDetail: React.FC = () => {
@@ -11,6 +12,7 @@ const TaskDetail: React.FC = () => {
   const [feedback, setFeedback] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [checking, setChecking] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
 
   useEffect(() => {
     if (id) {
@@ -37,6 +39,8 @@ const TaskDetail: React.FC = () => {
       if (response.is_correct) {
         setFeedback('Правильно! Молодец!')
         setTask(prev => prev ? { ...prev, is_solved: true } : null)
+        setShowConfetti(true)
+        setTimeout(() => setShowConfetti(false), 5000)
       } else {
         setFeedback('Неправильно. Попробуйте ещё раз или получите подсказку.')
       }
@@ -61,6 +65,7 @@ const TaskDetail: React.FC = () => {
 
   return (
     <div>
+      {showConfetti && <Confetti recycle={false} tweenDuration={8000} gravity={0.3} />}
       <Link to="/tasks" className="text-indigo-600 hover:text-indigo-500 mb-4 inline-block">
         ← Назад к задачам
       </Link>
