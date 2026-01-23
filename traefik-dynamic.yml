@@ -1,0 +1,22 @@
+http:
+  routers:
+    frontend:
+      rule: "PathPrefix(`/`)"
+      service: frontend
+      entrypoints:
+        - web
+      priority: 1
+    api:
+      rule: "PathPrefix(`/api`)"
+      service: backend
+      entrypoints:
+        - web
+  services:
+    frontend:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:5173"
+    backend:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8000"
