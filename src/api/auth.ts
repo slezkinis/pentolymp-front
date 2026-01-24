@@ -33,3 +33,8 @@ export const register = async (data: RegisterData): Promise<User> => {
   const response = await api.post('/api/auth/register/', data)
   return response.data
 }
+
+export const updateUsername = async (username: string): Promise<User> => {
+  const response = await api.patch('/api/auth/profile/', { username })
+  return response.data
+}

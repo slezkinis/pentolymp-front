@@ -1,0 +1,527 @@
+openapi: 3.0.3
+info:
+  title: Pentolymp API
+  version: 1.0.0
+  description: ХЗ что это
+paths:
+  /api/auth/login/:
+    post:
+      operationId: api_auth_login_create
+      description: Получение acess/refresh токенов при авторизации
+      summary: Авторизация пользователя
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+                description: Unspecified response body
+              examples:
+                Успешно:
+                  value:
+                    access: string
+                    refresh: string
+                    user: {}
+          description: ''
+        '400':
+          description: Validation error
+  /api/auth/profile/:
+    get:
+      operationId: api_auth_profile_retrieve
+      description: Получение информации о пользователе
+      summary: Получение информации о пользователе
+      tags:
+      - Auth
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+        '400':
+          description: Validation error
+    put:
+      operationId: api_auth_profile_update
+      description: Обновление информации о пользователе
+      summary: Обновление информации о пользователе (обновление всех полей)
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+        '400':
+          description: Validation error
+    patch:
+      operationId: api_auth_profile_partial_update
+      description: Обновление информации о пользователе
+      summary: Обновление информации о пользователе (конкретные поля)
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+        '400':
+          description: Validation error
+  /api/auth/register/:
+    post:
+      operationId: api_auth_register_create
+      description: Создание нового пользователя
+      summary: Регистрация пользователя
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+        '400':
+          description: Validation error
+  /api/tasks/subjects/:
+    get:
+      operationId: api_tasks_subjects_list
+      description: Получение учебных предметов
+      summary: Получение учебных предметов
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - Tasks
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTopicList'
+          description: ''
+        '400':
+          description: Validation error
+  /api/tasks/subjects/{subject_id}/topics/:
+    get:
+      operationId: api_tasks_subjects_topics_list
+      description: Получение тем учебного предмета
+      summary: Получение тем учебного предмета
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: path
+        name: subject_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Tasks
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTopicList'
+          description: ''
+        '400':
+          description: Validation error
+  /api/tasks/tasks/:
+    get:
+      operationId: api_tasks_tasks_list
+      description: Получение списка задач с возможностью фильтрации по имени и уровню
+        сложности
+      summary: Получение списка задач
+      parameters:
+      - in: query
+        name: difficulty_level
+        schema:
+          type: string
+          enum:
+          - Easy
+          - Hard
+          - Medium
+        description: фильтр задач по уровню сложности
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: фильтр задач по имени
+      - in: query
+        name: page
+        schema:
+          type: integer
+        description: Номер страницы
+      - in: query
+        name: subject_id
+        schema:
+          type: integer
+        description: ID предмета
+      - in: query
+        name: topic_id
+        schema:
+          type: integer
+        description: ID темы
+      tags:
+      - Tasks
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTaskList'
+          description: ''
+        '400':
+          description: Validation error
+  /api/tasks/tasks/{id}/:
+    get:
+      operationId: api_tasks_tasks_retrieve
+      description: Получение задачи по id
+      summary: Получение задачи
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Tasks
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+        '400':
+          description: Validation error
+    post:
+      operationId: api_tasks_tasks_create
+      description: Проверка ответа на задачу
+      summary: Проверка ответа
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckAnswer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckAnswer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CheckAnswer'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+                description: Unspecified response body
+              examples:
+                Успешно:
+                  value:
+                    is_correct: true
+          description: ''
+        '400':
+          description: Validation error
+  /api/tasks/tasks/{id}/tip/:
+    get:
+      operationId: api_tasks_tasks_tip_retrieve
+      description: Получение подсказки по id
+      summary: Получение подсказки
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Tasks
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tip'
+          description: ''
+        '400':
+          description: Validation error
+components:
+  schemas:
+    CheckAnswer:
+      type: object
+      properties:
+        answer:
+          type: string
+      required:
+      - answer
+    DifficultyLevelEnum:
+      enum:
+      - Easy
+      - Medium
+      - Hard
+      type: string
+      description: |-
+        * `Easy` - Легко
+        * `Medium` - Средне
+        * `Hard` - Трудно
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+    PaginatedTaskList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    PaginatedTopicList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        username:
+          type: string
+          maxLength: 20
+    Register:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        username:
+          type: string
+          maxLength: 20
+        password:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+      - password2
+      - username
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 30
+        description:
+          type: string
+          title: Условие задачи
+        difficulty_level:
+          allOf:
+          - $ref: '#/components/schemas/DifficultyLevelEnum'
+          title: Уровень сложности
+        is_solved:
+          type: boolean
+        topic:
+          type: string
+        subject:
+          type: string
+      required:
+      - description
+      - difficulty_level
+      - id
+      - is_solved
+      - name
+      - subject
+      - topic
+    Tip:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tip:
+          type: string
+          nullable: true
+          title: Подсказка
+      required:
+      - id
+    Topic:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 30
+      required:
+      - id
+      - name
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        username:
+          type: string
+          maxLength: 20
+      required:
+      - email
+      - id
+      - username
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
