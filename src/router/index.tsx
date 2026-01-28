@@ -7,6 +7,7 @@ import TopicsList from '../pages/TopicsList'
 import TasksList from '../pages/TasksList'
 import TaskDetail from '../pages/TaskDetail'
 import Profile from '../pages/Profile'
+import PvpPage from '../pages/PvpPage'
 
 const AppRouter = () => {
   return (
@@ -59,6 +60,16 @@ const AppRouter = () => {
           <ProtectedRoute>
             <Layout>
               <Profile />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/pvp"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <PvpPage />
             </Layout>
           </ProtectedRoute>
         }

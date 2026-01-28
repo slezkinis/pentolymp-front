@@ -12,10 +12,19 @@ export interface RegisterData {
   password2: string
 }
 
+export interface Rating {
+  score: number
+  matches_played: number
+  matches_won: number
+  matches_lost: number
+  matches_drawn: number
+}
+
 export interface User {
   id: number
   email: string
   username: string
+  rating?: Rating
 }
 
 export interface LoginResponse {
@@ -36,5 +45,10 @@ export const register = async (data: RegisterData): Promise<User> => {
 
 export const updateUsername = async (username: string): Promise<User> => {
   const response = await api.patch('/api/auth/profile/', { username })
+  return response.data
+}
+
+export const getUserProfile = async (): Promise<User> => {
+  const response = await api.get('/api/auth/profile/')
   return response.data
 }
