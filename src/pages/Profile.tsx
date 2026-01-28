@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import UserProfileInfo from '../components/profile/UserProfileInfo'
 import UsernameForm from '../components/profile/UsernameForm'
+import RatingStats from '../components/profile/RatingStats'
 
 const Profile: React.FC = () => {
-  const { user, updateUsername } = useAuth()
+  const { user, updateUsername, refreshUserProfile } = useAuth()
   const navigate = useNavigate()
   const [isEditing, setIsEditing] = useState(false)
+
+  useEffect(() => {
+    if (user) {
+      refreshUserProfile()
+    }
+  }, [])
 
   const handleUsernameUpdate = async (username: string) => {
     await updateUsername(username)
@@ -30,6 +37,10 @@ const Profile: React.FC = () => {
         
         <div className="space-y-6">
           <UserProfileInfo user={user} />
+          
+          {user.rating && (
+            <RatingStats rating={user.rating} />
+          )}
           
           <div className="mt-6">
             <div className="flex items-center justify-between mb-2">

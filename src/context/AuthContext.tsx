@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { login as apiLogin, register as apiRegister, updateUsername as apiUpdateUsername, LoginData, RegisterData, User, LoginResponse } from '../api/auth'
+import { login as apiLogin, register as apiRegister, updateUsername as apiUpdateUsername, getUserProfile as apiGetUserProfile, LoginData, RegisterData, User, LoginResponse } from '../api/auth'
 import { useLocalStorage, useAuthToken } from '../hooks'
 
 interface AuthContextType {
@@ -9,6 +9,7 @@ interface AuthContextType {
   register: (data: RegisterData) => Promise<void>
   logout: () => void
   updateUsername: (username: string) => Promise<void>
+  refreshUserProfile: () => Promise<void>
   loading: boolean
 }
 
@@ -45,6 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setAccessToken(response.access)
     setRefreshToken(response.refresh)
     setUser(response.user)
+    localStorage.setItem('user_id', response.user.id.toString())
   }
 
   const register = async (data: RegisterData) => {
@@ -55,10 +57,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setAccessToken(null)
     setRefreshToken(null)
     setUser(null)
+    localStorage.removeItem('user_id')
   }
 
   const updateUsername = async (username: string) => {
     const updatedUser = await apiUpdateUsername(username)
+    setUser(updatedUser)
+  }
+
+  const refreshUserProfile = async () => {
+    const updatedUser = await apiGetUserProfile()
     setUser(updatedUser)
   }
 
@@ -69,6 +77,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     register,
     logout,
     updateUsername,
+    refreshUserProfile,
     loading,
   }
 
