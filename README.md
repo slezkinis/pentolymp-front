@@ -15,3 +15,4 @@ BACKEND_URL=http://host.docker.internal:8000 - URL до бекенда из dock
 chmod +x start.sh && ./start.sh
 ```
 Если windows, просто запустите `start.bat`
+4. Приложение будет запущено на `http://127.0.0.1:1111`
