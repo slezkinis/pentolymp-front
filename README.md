@@ -1,14 +1,18 @@
 # pentolymp-front
 
 ## Перед запуском
-1. В файле `src/api/client.ts` установить `API_BASE_URL` равное домену, на котором будет запущен фронт и бек (в дальнейшем будет через env)
-2. Запустить [бек](https://github.com/slezkinis/pentolymp-backend)
-3. Запустить командой `npx vite --host 0.0.0.0 --port 5173`
-4. Запустить `traefik` командой:
-``` sh
-docker compose up --build
+1. Создать файл `.env` и настроить ссылки до бекенда. Вот пример
 ```
-5. Приложение будет доступно по `localhost:1111`
+VITE_BACKEND_URL=http://127.0.0.1:8000 - путь до API сервера. Обычно это сам домен фронтенда.
+VITE_WS_URL=ws://127.0.0.1:8000 - путь до WS сервера. Обычно это сам домен фронтенда.
+BACKEND_URL=http://host.docker.internal:8000 - URL до бекенда из docker
+```
 
-## TODO
-1. Нужно закинуть всё в монорепу и запускать оттуда.
+2. Запустите [бекенд](https://github.com/slezkinis/pentolymp-backend)
+3. Запустите фронтенд в docker командами:
+Если Linux/Mac:
+``` sh
+chmod +x start.sh && ./start.sh
+```
+Если windows, просто запустите `start.bat`
+4. Приложение будет запущено на `http://127.0.0.1:1111`
