@@ -164,7 +164,8 @@ export class PvpQueueService {
 
   async connect(token: string) {
     try {
-      await this.wsManager.connect('ws://127.0.0.1:8000/pvp/queue/', token)
+      const wsUrl = `${import.meta.env.VITE_WS_URL || 'ws://127.0.0.1:8000'}/pvp/queue/`
+      await this.wsManager.connect(wsUrl, token)
     } catch (error) {
       console.error('Failed to connect to queue:', error)
       throw error
@@ -233,7 +234,8 @@ export class PvpMatchService {
 
   async connect(matchId: number, token: string) {
     try {
-      await this.wsManager.connect(`ws://127.0.0.1:8000/pvp/match/${matchId}/`, token)
+      const wsUrl = `${import.meta.env.VITE_WS_URL || 'ws://127.0.0.1:8000'}/pvp/match/${matchId}/`
+      await this.wsManager.connect(wsUrl, token)
       this.wsManager.send({ type: 'ready' })
     } catch (error) {
       console.error('Failed to connect to match:', error)
