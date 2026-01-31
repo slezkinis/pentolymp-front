@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
               >
                 <h1 className="text-2xl font-bold text-gray-900">ПентОлимп</h1>
               </a>
-              <nav className="hidden md:flex space-x-6">
+              <nav className="md:flex space-x-6">
                 <a
                   href="/"
                   onClick={(e) => handleNavigation(e, '/')}
