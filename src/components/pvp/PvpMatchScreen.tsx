@@ -239,7 +239,7 @@ export default function PvpMatchScreen({ matchId, onExit }: PvpMatchScreenProps)
   const handleMatchFinished = (data: any) => {
     console.log('Match completed:', data)
     
-    if (data.result === 'technical' || !data.winner) {
+    if (data.result === 'technical' || (data.result !== 'draw' && !data.winner)) {
       setTechnicalResult(true)
     } else {
       setMatchResults(data)
