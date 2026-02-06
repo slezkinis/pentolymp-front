@@ -6,29 +6,34 @@ http:
       entrypoints:
         - web
       priority: 10
+
     admin:
       rule: "PathPrefix(`/admin`)"
       service: backend
       entrypoints:
         - web
       priority: 20
+
     static:
       rule: "PathPrefix(`/static`)"
       service: backend
       entrypoints:
         - web
       priority: 20
+
     api:
       rule: "PathPrefix(`/api`)"
       service: backend
       entrypoints:
         - web
       priority: 20
+
   services:
     frontend:
       loadBalancer:
         servers:
-          - url: "http://frontend:5173"
+          - url: "http://frontend:80"
+
     backend:
       loadBalancer:
         servers:
