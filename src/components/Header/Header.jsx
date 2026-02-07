@@ -6,7 +6,7 @@ export const Header = () => {
   const { user, logout } = useAuth()
   return (
     <header className={Styles.header}>
-      <a style={{textDecoration: 'none', color: 'black'}} href='/'>
+      <a style={{textDecoration: 'none', color: 'black', marginLeft: '2%'}} href='/'>
         <h1 className={Styles.site_name}>ПентОлимп</h1>
       </a>
       <a href='/' className={Styles.header_option}>Предметы</a>
