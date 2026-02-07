@@ -16,14 +16,14 @@ interface PvpQueueScreenProps {
 
 export default function PvP_menu({ onMatchFound }: PvpQueueScreenProps) {
   const { state, startQueue, cancelQueue } = usePvp()
-  console.log(state)
-  const { user } = useAuth()
+  const { user, refreshUserProfile } = useAuth()
   const { data: subjects, hasMore, loadMore } = useInfiniteSubjectsScroll(getSubjects)
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const [queueService, setQueueService] = useState<PvpQueueService | null>(null)
-  
+
   useEffect(() => {
     return () => {
+      refreshUserProfile()
       if (queueService) {
         queueService.disconnect()
       }
