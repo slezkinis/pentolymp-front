@@ -73,7 +73,7 @@ export default function Task_details() {
       {showConfetti && <Confetti recycle={false} tweenDuration={8000} gravity={0.3} className={Styles.confetti}/>}
       <h1 style={{marginTop: 'auto'}} className={Styles.task_name}>{task.name}</h1>
       <div className={Styles.task_info}>
-        <div className={Styles.level_icon}>{task.difficulty_level === 'Easy' ? 'Легко' : task.difficulty_level === 'Medium' ? 'Средне' : 'Трудно'}</div>
+        <div className={`${Styles.level_icon} ${task.difficulty_level === 'Easy' ? Styles.easy : task.difficulty_level === 'Medium' ? Styles.medium : Styles.hard}`}>{task.difficulty_level === 'Easy' ? 'Легко' : task.difficulty_level === 'Medium' ? 'Средне' : 'Трудно'}</div>
         <div className={Styles.task_subject}>{task.subject} - {task.topic}</div>
         <div className={Styles.task_status}>{task.is_solved ? '✓ Решена' : 'Не решена'}</div>
       </div>

@@ -12,7 +12,6 @@
 }
 
 .level_icon {
-    background-color: rgb(168, 226, 168);
     font-size: 14px;
     line-height: 25px;
     width:3.5%;
@@ -57,6 +56,19 @@
     height: 40px;
     border: 2px solid rgb(179, 179, 179);
     border-radius: 0.375rem;
+}
+
+.easy {
+    background-color: rgb(168, 226, 168);
+}
+
+
+.medium {
+    background-color: rgb(235, 194, 30);
+}
+
+.hard {
+    background-color: rgb(244, 38, 38);
 }
 
 .answer_input:focus {
