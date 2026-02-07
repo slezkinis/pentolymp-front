@@ -1,4 +1,4 @@
-import { Task } from '../context/PvpContext'
+import { Task } from '../context/PvPContext'
 
 export interface WebSocketMessage {
   type: string

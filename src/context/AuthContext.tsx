@@ -1,6 +1,8 @@
+"use client"
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { login as apiLogin, register as apiRegister, updateUsername as apiUpdateUsername, getUserProfile as apiGetUserProfile, LoginData, RegisterData, User, LoginResponse } from '../api/auth'
 import { useLocalStorage, useAuthToken } from '../hooks'
+
 
 interface AuthContextType {
   user: User | null

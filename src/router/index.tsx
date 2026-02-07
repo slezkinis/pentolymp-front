@@ -1,77 +1,79 @@
 import { Routes, Route } from 'react-router-dom'
-import { Layout, ProtectedRoute } from '../components'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import SubjectsList from '../pages/SubjectsList'
-import TopicsList from '../pages/TopicsList'
-import TasksList from '../pages/TasksList'
-import TaskDetail from '../pages/TaskDetail'
-import Profile from '../pages/Profile'
-import PvpPage from '../pages/PvpPage'
+import Layout from '../Components/Layout/Layout'
+import Protected_route from "../Components/Protected_route/Protected_route"
+import Login_page from '../pages/login_page'
+import Register_page from '../pages/register'
+import PvP_page from '../pages/pvp'
+import Subjects_page from '../pages/subjects'
+import Topics_page from '../pages/topics'
+import Task_page from '../pages/task'
+import Tasks_page from '../pages/tasks_page'
+import Profile_page from '../pages/profile'
+
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login_page />} />
+      <Route path="/register" element={<Register_page />} />
       <Route
         path="/"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <SubjectsList />
+              <Subjects_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
       <Route
         path="/subjects/:subjectId/topics"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <TopicsList />
+              <Topics_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
       <Route
         path="/tasks"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <TasksList />
+              <Tasks_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
       <Route
-        path="/tasks/:id"
+        path="/task/:id"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <TaskDetail />
+              <Task_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
       <Route
         path="/profile"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <Profile />
+              <Profile_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
       <Route
         path="/pvp"
         element={
-          <ProtectedRoute>
+          <Protected_route>
             <Layout>
-              <PvpPage />
+              <PvP_page />
             </Layout>
-          </ProtectedRoute>
+          </Protected_route>
         }
       />
     </Routes>

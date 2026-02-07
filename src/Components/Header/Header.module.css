@@ -1,0 +1,122 @@
+.header  {
+    background-color: white;
+    width:100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 1.2%;
+}
+
+.site_name {
+    margin: 0%; 
+    margin-left: 2%;
+    font-size: 45px
+}
+
+.header_option {
+    text-decoration: none;
+    font-size: 26px;
+    color: black;
+    opacity: 85%;
+    margin-left: 2%
+}
+
+.header_option:hover {
+    opacity: 100%;
+}
+
+.header_nickname {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    margin-left: 0.5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 20%
+}
+
+.logout {
+    height: 50%;
+    margin-right: 2%;
+    width: 1.8%;
+    background-color: red;
+    opacity:80%;
+    border: 0;
+    border-radius: 20%;
+    margin-left:1%
+}
+
+.logout_icon {
+    width: 80%;
+    height: 80%;
+    margin-left: 18%;
+    margin-top: 2%;
+    color: white;
+}
+
+
+.logout:hover {
+    background-color: rgb(184, 0, 0);
+}
+
+#last_header_option {
+    margin-right: auto
+}
+
+@media (min-height: 700px) and (max-height: 1000px) {
+    .header {
+        height: 10%;
+    }
+    .logout {
+        width: 2.2%
+    }
+}
+
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .header {
+        height: 13%;
+    }
+    .site_name {
+        font-size: 20px
+    }
+    .header_option {
+        font-size: 18px;
+        margin-left: 3.5%;
+    }
+    #last_header_option {
+        margin-right: auto
+    }
+    .logo {
+        display: none;
+    }
+    .header_nickname {
+        width: 17%;
+        font-size: 16px
+    }
+    .logout {
+        width: 8%;
+        height: 30%;
+    }
+}
+
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .header {
+        height: 15%;
+    }
+    .logo {
+        width: 2.5%
+    }
+    .logout {
+        width: 3.5%;
+        height: 52%;
+    }
+    .header_option {
+        margin-left: 5%;
+    }
+}

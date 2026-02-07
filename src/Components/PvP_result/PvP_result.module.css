@@ -1,0 +1,168 @@
+.result_menu {
+    width: 40%;
+    margin-left: 30%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    border-radius: 0.45rem
+}
+
+.players_container {
+    margin-bottom: 7%;
+    width: 90%;
+    margin-left: 5%;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.result_emoji {
+    margin-top: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    scale: 4.5;
+    width: 50px;
+}
+
+.result_title {
+    font-size: 40px;
+    margin-bottom: 0
+}
+
+.result_undertext {
+    margin-top: 1%;
+    font-size: 18px;
+    opacity: 70%;
+    margin-bottom: 3%
+}
+
+.player {
+    border-radius: 0.375rem;
+    border: 2px solid rgb(219, 219, 219);
+}
+
+.winner {
+    border: 2px solid rgb(25, 105, 38);
+    background-color: rgb(224, 255, 224);
+}
+
+.line_container {
+    width: 94%;
+    margin-left: 3%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%
+}
+
+.result_loose_message {
+    width: 90%;
+    margin-left: 5%;
+    height: 70px;
+    border-radius: 0.375rem;
+    border: 2px solid rgb(72, 132, 211);
+    background-color: rgb(189, 215, 255);
+    margin-top: -2%;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(28, 88, 167);
+    margin-bottom: 3%;
+}
+
+.result_win_message {
+    width: 90%;
+    margin-left: 5%;
+    height: 70px;
+    border-radius: 0.375rem;
+    border: 2px solid rgb(151, 122, 26);
+    background-color: rgb(255, 239, 187);
+    margin-top: -2%;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(83, 62, 16);
+    margin-bottom: 3%;
+}
+
+.exit_button {
+    width: 25%;
+    height: 50px;
+    border: 2px solid rgb(58, 88, 255);
+    border-radius: 0.375rem;
+    background-color: rgb(58, 88, 255);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%
+}
+
+.exit_button:hover {
+    border: 2px solid rgb(35, 68, 255);
+    background-color: rgb(35, 68, 255);
+}
+
+.exit_link {
+    color: white;
+    font-size: 18px;
+    text-decoration: none
+}
+
+.draw {
+    border: 2px solid rgb(190, 180, 27);
+    background-color: rgb(255, 253, 220);
+}
+
+
+@media (min-height: 700px) and (max-height: 1000px) {
+    .result_menu {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .result_menu {
+        margin-top: 5%;
+        width: 110%;
+        margin-left: -5%;
+        padding-bottom: 7%
+    }
+    .player_nickname {
+        font-size: 20px
+    }
+    .players_container {
+        gap: 10px;
+        font-size: 14px
+    }
+    .result_emoji {
+        margin-top: 10%;
+        scale: 4
+    }
+    .exit_button {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .result_win_message {
+        font-size: 16px
+    }
+    .result_loose_message {
+        font-size: 16px
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .result_menu {
+        margin-top: 5%;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: 2fr 1fr;
+    }
+}
