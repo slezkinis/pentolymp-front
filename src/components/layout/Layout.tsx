@@ -1,21 +1,16 @@
-import React from 'react'
-import { Header, UserMenu } from './index'
+import "../../index.css";
+import { AuthProvider } from "../../context/AuthContext";
+import { Header } from "../Header/Header";
 
-interface LayoutProps {
-  children: React.ReactNode
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export default function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <Header>
-        <UserMenu />
-      </Header>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
-      </main>
-    </div>
-  )
+    <AuthProvider>
+      <Header />
+      {children}
+    </AuthProvider>
+  );
 }
-
-export default Layout

@@ -42,7 +42,7 @@ export interface CheckAnswerResponse {
   is_correct: boolean
 }
 
-export const getSubjects = async (page?: number): Promise<PaginatedResponse<Subject>> => {
+export const getSubjects = async (page?: number) => {
   const params = page ? { page } : {}
   const response = await api.get('/api/tasks/subjects/', { params })
   return response.data

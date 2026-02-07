@@ -1,0 +1,169 @@
+.task_main {
+    width: 100%;
+    background-color: white;
+    border-radius: 0.4rem;
+    min-height: max-content;
+}
+
+.task_info {
+    margin-left:2%; 
+    display: flex;
+    align-items: center;
+}
+
+.level_icon {
+    background-color: rgb(168, 226, 168);
+    font-size: 14px;
+    line-height: 25px;
+    width:3.5%;
+    text-align: center;
+    border-radius: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-right: 1.2%;
+    min-width: 70px
+}
+
+.task_name {
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+.task_subject {
+    font-size: 18px;
+    opacity: 70%;
+    margin-right: 1.2%
+}
+
+.task_status {
+    font-size: 18px;
+    opacity: 70%;
+}
+
+.task_text {
+    margin-top: 1%;
+    font-size: 24px;
+    padding-left: 2%;
+    width: 95%;
+    overflow-wrap: anywhere;
+}
+
+.answer_input {
+    font-size: 16px;
+    padding-left: 0.5%;
+    margin-top: 0.8%;
+    width: 90%;
+    margin-left: 2%;
+    height: 40px;
+    border: 2px solid rgb(179, 179, 179);
+    border-radius: 0.375rem;
+}
+
+.answer_input:focus {
+    outline: none;
+    border-color:rgb(0, 0, 255);
+    border-width: 2px
+}
+
+.button_container {
+    padding-bottom: 2%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width:22%;
+    height: 40px;
+    margin-top: 1%;
+    margin-left: 2%
+}
+
+.button_container_2 {
+    padding-bottom: 2%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width:22%;
+    height: 40px;
+    margin-top: 1%;
+    margin-left: 2%
+}
+
+.check_button {
+    min-width: 200px;
+    border: 0;
+    border-radius: 0.375rem;
+    background-color: rgb(71, 71, 216);
+    display: flex;
+    align-items: center;
+}
+
+.button_icon {
+    padding-left: 10%;
+    color: white;
+}
+
+.button_text {
+    position: relative;
+    left: 6%;
+    color: white;
+    font-size: 16px
+}
+
+.check_button:hover {
+    transition: 0.2s;
+    background-color: rgb(51, 51, 158);
+}
+
+.check_button:disabled {
+    background-color: rgb(163, 163, 163);
+}
+
+.task_status_banner {
+    width: 90%;
+    margin-left: 2%;
+    height: 55px;
+    margin-top: -1%;
+    border-radius: 0.375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1%;
+    margin-bottom: 0.5%;
+}
+
+.confetti {
+    width: 100%;
+    align-items: center;
+}
+@media (max-width: 768px) and (orientation: portrait) {
+    .task_info {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+        margin-bottom: 5%
+    }
+    .answer_input {
+        margin-top: 5%;
+        margin-bottom: 5%
+    }
+    .button_container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        height: 100px;
+        margin-bottom: 5%
+    }
+    .task_status_banner {
+        margin-bottom: 5%
+    }
+    .button_container_2 {
+        grid-template-columns: repeat(2, 1fr);
+        height: 50px;
+        margin-bottom: 5%
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .task_subject {
+        margin-right: 5%;
+        margin-left: 3%;
+    }
+}

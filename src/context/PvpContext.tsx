@@ -52,11 +52,6 @@ export interface QueueState {
 export interface PvpState {
   queue: QueueState
   match: PvpMatch | null
-  rating: {
-    current: number
-    rank: string
-    change: number
-  }
   connectionStatus: 'disconnected' | 'connecting' | 'connected'
   error: string | null
 }
@@ -65,7 +60,6 @@ type PvpAction =
   | { type: 'SET_QUEUE_STATUS'; payload: Partial<QueueState> }
   | { type: 'SET_MATCH'; payload: PvpMatch | null }
   | { type: 'UPDATE_MATCH_PROGRESS'; payload: Partial<PvpMatch> }
-  | { type: 'SET_RATING'; payload: Partial<PvpState['rating']> }
   | { type: 'SET_CONNECTION_STATUS'; payload: PvpState['connectionStatus'] }
   | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'RESET_PVP_STATE' }
@@ -78,11 +72,6 @@ const initialState: PvpState = {
     playersSearching: 0,
   },
   match: null,
-  rating: {
-    current: 1000,
-    rank: 'Новичок',
-    change: 0,
-  },
   connectionStatus: 'disconnected',
   error: null,
 }
@@ -105,11 +94,6 @@ function pvpReducer(state: PvpState, action: PvpAction): PvpState {
       return {
         ...state,
         match: { ...state.match, ...action.payload },
-      }
-    case 'SET_RATING':
-      return {
-        ...state,
-        rating: { ...state.rating, ...action.payload },
       }
     case 'SET_CONNECTION_STATUS':
       return {
