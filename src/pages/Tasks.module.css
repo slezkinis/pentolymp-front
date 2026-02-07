@@ -5,10 +5,12 @@
 
 .tasks {
     display: grid;
-    grid-template-columns: repeat(4, 22%);
+    grid-template-columns: repeat(4, 23%);
     width: 100%;
     gap: 30px;
-    margin-top: 1%;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    justify-content: center;
 }
 
 .more_tasks {

@@ -47,7 +47,7 @@ export default function PvP_task_details({ task, onSubmitAnswer, disabled = fals
       {answerResult &&
          (answerResult.correct === true
             ? (<div className={Styles.task_status_banner} style={{backgroundColor: 'rgb(170, 236, 181)', color: 'rgb(39, 104, 50)'}}>Правильно! Молодец!</div>)
-            : (<div className={Styles.task_status_banner} style={{backgroundColor: 'rgb(238, 150, 150)', color: 'rgb(104, 38, 38)'}}>Неправильно. Попробуйте ещё раз или получите подсказку</div>)
+            : (<div className={Styles.task_status_banner} style={{backgroundColor: 'rgb(238, 150, 150)', color: 'rgb(104, 38, 38)'}}>Неправильно. Попробуйте ещё раз</div>)
           )
       }
       <div style={{visibility: 'hidden'}}>Пасхалка</div>

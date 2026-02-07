@@ -274,7 +274,6 @@ export default function Pvp_match_screen({ matchId, onExit }: PvpMatchScreenProp
   if (state.match) {
     const enemy_progress = `${state.match.opponent_progress.tasks_solved}/${state.match.total_tasks}`
     const my_progress = `${state.match.current_task_index + 1}/${state.match.total_tasks}`
-    let task_id: any = state.match.current_task?.id
     return (
       <div className={Styles.pvp_menu}>
           <div><PvP_task_details 

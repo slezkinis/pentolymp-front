@@ -56,7 +56,7 @@ export const Profile = () => {
         <p className={Styles.email_text}>Email</p>
         <p className={Styles.email}>{user.email}</p>
         <div className={Styles.statistic}>
-            <h3 className={Styles.statistic_header}>Статистика рейтинга</h3>
+            <h3 className={Styles.statistic_header}>Статистика PvP</h3>
             <div className={Styles.statistic_container}>
                 <div className={Styles.statistic_rating}>
                     <div className={Styles.rating_number}>{user.rating.score}</div>

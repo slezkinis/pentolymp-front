@@ -46,7 +46,7 @@ const Tasks_page = () => {
                     dataLength={tasks.length}
                     next={loadMore}
                     hasMore={hasMore}
-                    loader={<div>Загрузка...</div>}
+                    loader={<div style={{textAlign: 'center'}}>Загрузка...</div>}
                 >
                     <div className={Styles.tasks}>
                         {tasks.map(task => (
