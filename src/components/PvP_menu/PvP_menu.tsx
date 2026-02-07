@@ -92,7 +92,9 @@ export default function PvP_menu({ onMatchFound }: PvpQueueScreenProps) {
         <InfiniteScroll dataLength={subjects.length} next={loadMore} hasMore={hasMore} loader={<div>Загрузка...</div>}>
             <div className={Styles.subjects_container}>
                 {subjects.map((subject: any) => (
-                    <div onClick={() => setSelectedSubject(subject)} key={subject.id} className={`${Styles.pvp_subject} ${selectedSubject?.id === subject.id ? Styles.active_subject : Styles.disactive_subject}`}>{subject.name}</div>
+                    <div onClick={() => setSelectedSubject(subject)} key={subject.id} className={`${Styles.pvp_subject} ${selectedSubject?.id === subject.id ? Styles.active_subject : Styles.disactive_subject}`}>
+                      <p className={Styles.subject_name}>{subject.name}</p>
+                    </div>
                 ))}
             </div>
         </InfiniteScroll>
