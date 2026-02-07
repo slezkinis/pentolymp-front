@@ -22,8 +22,8 @@ export default function PvP_menu({ onMatchFound }: PvpQueueScreenProps) {
   const [queueService, setQueueService] = useState<PvpQueueService | null>(null)
 
   useEffect(() => {
+    refreshUserProfile()
     return () => {
-      refreshUserProfile()
       if (queueService) {
         queueService.disconnect()
       }
