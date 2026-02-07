@@ -25,6 +25,12 @@
 
 .task_name {
     margin-left: 5%;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline;
+    overflow: hidden;
+    word-break: break-all;
 }
 
 .task_underline {

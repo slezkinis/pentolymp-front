@@ -33,10 +33,14 @@
 @media (max-width: 768px) and (orientation: portrait) {
     .pvp_menu {
         margin-top: 5%;
-        width: 110%;
-        margin-left: -5%;
+        width: 100%;
+        margin-left: 0%;
         grid-template-columns: 1fr;
         gap: 5px;
+    }
+    .exit_button {
+        width: 90%;
+        margin-left: 5%
     }
 }
 

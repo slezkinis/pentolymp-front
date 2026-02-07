@@ -27,6 +27,7 @@
 .task_name {
     padding-left: 2%;
     padding-top: 1%;
+    max-width: 90%;
 }
 
 .task_subject {
@@ -135,6 +136,10 @@
     align-items: center;
 }
 @media (max-width: 768px) and (orientation: portrait) {
+    .task_main {
+        width: 90%;
+        margin-left: 5%
+    }
     .task_info {
         flex-direction: column;
         align-items: start;

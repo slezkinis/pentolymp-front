@@ -22,6 +22,12 @@
     font-size: 18px
 }
 
+@media (max-width: 768px) and (orientation: portrait) {
+    .match_status {
+        width: 90%;
+        margin-left: 5%
+    }
+}
 
 @media (max-width: 1000px) and (orientation: landscape) {
     .match_left_text {

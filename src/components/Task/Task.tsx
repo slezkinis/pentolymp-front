@@ -79,7 +79,7 @@ export default function Task_details() {
       </div>
       <div className={Styles.task_text} dangerouslySetInnerHTML={{ __html: task.description }}></div>
       <div style={{marginTop: '1%', paddingLeft: '2%'}}>Ваш ответ</div>
-      <input value={answer} onChange={(e) => setAnswer(e.target.value)} type='text' placeholder="Введите ваш ответ" className={Styles.answer_input}></input>
+      <input name='answer_input' value={answer} onChange={(e) => setAnswer(e.target.value)} type='text' placeholder="Введите ваш ответ" className={Styles.answer_input}></input>
       <div className={Styles.button_container}>
         <button className={Styles.check_button} onClick={handleCheckAnswer} disabled={checking || !answer.trim()}>
           <svg className={Styles.button_icon} stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" width="8%" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +104,7 @@ export default function Task_details() {
         : <></>
       }
       {isHelping === true ?
-         (hint !== null
+         (hint?.tip
             ? (<div className={Styles.task_hint_banner} style={{backgroundColor: 'rgb(226, 224, 255)', color: 'rgb(33, 27, 105)'}}>
                 <div style={{fontSize: '20px', marginBottom: '0.5%'}}>Подсказка</div>
                 <div>{hint.tip}</div>

@@ -3,9 +3,8 @@
     height: 125px;
     background-color: white;
     border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
     box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+    display: block;
     color: black;
 }
 
@@ -18,19 +17,26 @@
     width:95%;
     margin-top: 1.5%;
     margin-left:5%;
-    margin-right: 5%;
+    padding-right: 0;
     display: flex;
     align-items: center;
 }
 
 .subject_name {
     margin-left: 5%;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline;
+    overflow: hidden;
+    word-break: break-all;
 }
 
 .subject_underline {
     margin-left: 5%;
     margin-top: -0.5%;
     opacity: 70%;
+    width: fit-content;
 }
 
 .subject:hover {
