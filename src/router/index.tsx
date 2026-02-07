@@ -2,13 +2,13 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from '../Components/Layout/Layout'
 import Protected_route from "../Components/Protected_route/Protected_route"
 import Login_page from '../pages/login_page'
-import Register_page from '../pages/register'
+import Register_page from '../pages/Register'
 import PvP_page from '../pages/pvp'
 import Subjects_page from '../pages/subjects'
 import Topics_page from '../pages/topics'
 import Task_page from '../pages/task'
 import Tasks_page from '../pages/tasks_page'
-import Profile_page from '../pages/profile'
+import Profile_page from '../pages/Profile'
 
 
 const AppRouter = () => {
