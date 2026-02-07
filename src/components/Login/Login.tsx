@@ -19,21 +19,13 @@ export const Login = () => {
       await login(formData)
       navigate('/')
     } catch (err: any) {
-      let errorMessage = 'Неверный логин или пароль'
-      if (err.response?.data) {
-        const data = err.response.data
-        if (data.detail) {
-          errorMessage = data.detail
-        } else if (data.non_field_errors?.[0]) {
-          errorMessage = data.non_field_errors[0]
-        } else {
-          const fieldErrors = []
-          if (data.email) fieldErrors.push(`Email: ${data.email[0]}`)
-          if (data.password) fieldErrors.push(`Пароль: ${data.password[0]}`)
-          if (fieldErrors.length > 0) {
-            errorMessage = fieldErrors.join('\n')
-          }
-        }
+      let errorMessage = 'Ошибка входа'
+      if (err.response?.status === 401) {
+        errorMessage = 'Неверный логин или пароль'
+      } else if (err.response?.data?.detail) {
+        errorMessage = err.response.data.detail
+      } else if (err.response?.data?.non_field_errors?.[0]) {
+        errorMessage = err.response.data.non_field_errors[0]
       }
       setError(errorMessage)
     }

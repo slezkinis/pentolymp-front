@@ -28,7 +28,7 @@ export default function PvP_task_details({ task, onSubmitAnswer, disabled = fals
     setAnswer('')
   }
   
-  if (!task) return (<div>Задача не найдена</div>)
+  if (!task) return (<div style={{textAlign: 'center'}}>В предмете отсутствуют задачи</div>)
   return (
     <div className={Styles.task_main}>
       <h1 style={{marginTop: 'auto'}} className={Styles.task_name}>{task.name}</h1>
