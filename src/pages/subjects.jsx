@@ -1,5 +1,5 @@
 'use client'
-import { Subject } from '../Components/Subject/Subject'
+import { Subject } from '../components/Subject/Subject'
 import Styles from './Subjects.module.css'
 import { getSubjects } from '../api/tasks'
 import useInfiniteSubjectsScroll from '../hooks/useInfiniteSubjectsScroll'

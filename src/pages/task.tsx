@@ -1,4 +1,4 @@
-import Task_details from '../Components/Task/Task'
+import Task_details from '../components/Task/Task'
 import Styles from './Task.module.css'
 import { useSearchParams } from 'react-router-dom'
 

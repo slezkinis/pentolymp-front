@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Subject, getSubjects } from '../../api/tasks'
 import useInfiniteSubjectsScroll from '../../hooks/useInfiniteSubjectsScroll'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { usePvp } from '../../context/PvPContext'
+import { usePvp } from '../../context/PvpContext'
 import { useAuth } from "../../context/AuthContext";
 import { PvpQueueService, WebSocketManager } from '../../services/pvpServices'
 import { PvP_queue } from "../PvP_queue/PvP_queue";

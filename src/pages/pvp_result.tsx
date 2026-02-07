@@ -1,4 +1,4 @@
-import { PvP_result } from '../Components/PvP_result/PvP_result'
+import { PvP_result } from '../components/PvP_result/PvP_result'
 
 
 interface ResultProps {

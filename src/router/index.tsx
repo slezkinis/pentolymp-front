@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import Layout from '../Components/Layout/Layout'
-import Protected_route from "../Components/Protected_route/Protected_route"
+import Layout from '../components/layout/Layout'
+import Protected_route from "../components/Protected_route/Protected_route"
 import Login_page from '../pages/login_page'
 import Register_page from '../pages/Register'
 import PvP_page from '../pages/pvp'

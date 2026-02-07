@@ -1,4 +1,4 @@
-import { Technical_result } from '../Components/Technical_result/Technical_result'
+import { Technical_result } from '../components/Technical_result/Technical_result'
 
 
 const Technical_end_page = () => {

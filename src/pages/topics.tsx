@@ -1,4 +1,4 @@
-import { Topic } from '../Components/Topic/Topic'
+import { Topic } from '../components/Topic/Topic'
 import Styles from './Topics.module.css'
 import { useParams } from 'react-router-dom'
 import { getTopics } from '../api/tasks'

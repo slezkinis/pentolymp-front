@@ -1,6 +1,6 @@
 'use client'
-import { Task_filter } from '../Components/Task_filter/Task_filter'
-import { Task_icon } from '../Components/Task_icon/Task_icon'
+import { Task_filter } from '../components/Task_filter/Task_filter'
+import { Task_icon } from '../components/Task_icon/Task_icon'
 import Styles from './Tasks.module.css'
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'react-router-dom'

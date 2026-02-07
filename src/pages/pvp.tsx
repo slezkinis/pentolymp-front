@@ -1,6 +1,6 @@
 'use client'
-import PvP_match_screen from '../Components/PvP_battle_screen/PvP_battle_screen';
-import PvP_menu from '../Components/PvP_menu/PvP_menu'
+import PvP_match_screen from '../components/PvP_battle_screen/PvP_battle_screen';
+import PvP_menu from '../components/PvP_menu/PvP_menu'
 import { useState } from 'react';
 
 

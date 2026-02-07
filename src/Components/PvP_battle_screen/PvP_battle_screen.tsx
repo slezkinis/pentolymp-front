@@ -1,9 +1,9 @@
 "use client"
 import { Match_status } from "../Match_status/Match_status";
 import Styles from "./PvP_battle_screen.module.css";
-import PvP_task_details from '../../Components/PvP_task/PvP_task'
+import PvP_task_details from '../../components/PvP_task/PvP_task'
 import { useState, useEffect } from 'react'
-import { usePvp } from '../../context/PvPContext'
+import { usePvp } from '../../context/PvpContext'
 import { PvpMatchService, WebSocketManager } from '../../services/pvpServices'
 import Technical_end_page from "../../pages/techinical_end";
 import PvP_result_page from "../../pages/pvp_result";
