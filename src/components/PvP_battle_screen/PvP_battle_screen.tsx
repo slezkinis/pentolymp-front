@@ -22,6 +22,7 @@ export default function Pvp_match_screen({ matchId, onExit }: PvpMatchScreenProp
   const [currentTime, setCurrentTime] = useState(new Date())
   const [technicalResult, setTechnicalResult] = useState(false)
   const [answerResult, setAnswerResult] = useState<{correct: boolean} | null>(null)
+  const [checking, setChecking] = useState(false)
 
   useEffect(() => {
     initializeMatch()
@@ -110,6 +111,7 @@ export default function Pvp_match_screen({ matchId, onExit }: PvpMatchScreenProp
 
       service.onAnswerResult((data) => {
         console.log('Answer result:', data)
+        setChecking(false)
         
         if (data.correct) {
           setAnswerResult({correct: true})
@@ -216,6 +218,7 @@ export default function Pvp_match_screen({ matchId, onExit }: PvpMatchScreenProp
   
   const handleSubmitAnswer = (answer: string) => {
     if (matchService) {
+      setChecking(true)
       submitAnswer(answer)
       matchService.submitAnswer(answer)
     }
@@ -277,7 +280,7 @@ export default function Pvp_match_screen({ matchId, onExit }: PvpMatchScreenProp
           <div><PvP_task_details 
             task={state.match.current_task}
             onSubmitAnswer={handleSubmitAnswer}
-            disabled={state.match.status !== 'playing'}
+            disabled={!state.match.current_task || checking}
             answerResult={answerResult}/></div>
           <div>
             <Match_status title='Статус матча' t1='Время:' t2={formatTime(getRemainingTime())} t3='Предмет:' t4={state.match?.subject} t5='Задание:' t6={my_progress} t7='Прогресс матча' t8={`${Math.round(getProgressPercentage(state.match.current_task_index, state.match.total_tasks))}%`} />
