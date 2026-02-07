@@ -21,7 +21,6 @@ export const Match_status = ({title, t1, t2, t3, t4, t5, t6, t7, t8}) => {
             <div className={Styles.match_left_text}>{t7}</div>
             <div className={Styles.match_right_text}>{t8}</div>
         </div>
-        <div className={Styles.line}></div>
     </div>
   );
 };

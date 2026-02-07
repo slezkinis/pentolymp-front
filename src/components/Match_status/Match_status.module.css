@@ -22,14 +22,6 @@
     font-size: 18px
 }
 
-.line {
-    width: 90%;
-    position: relative;
-    top: 2%;
-    height: 1px;
-    background-color: rgb(179, 179, 179);
-    margin-left: 5%
-}
 
 @media (max-width: 1000px) and (orientation: landscape) {
     .match_left_text {
