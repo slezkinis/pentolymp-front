@@ -14,7 +14,7 @@ export const Task_icon = ({subject_id, task_name, task_level, task_status, task_
           </div>
           <div className={Styles.text_line_container}>
             <div className={Styles.task_underline}>{task_level}</div>
-            <div className={Styles.task_underline}>{task_status}</div>
+            <div className={`${Styles.task_underline} ${task_status === 'Решена' ? Styles.solved : Styles.unsolved}`}>{task_status}</div>
           </div>
       </div>
     </a>

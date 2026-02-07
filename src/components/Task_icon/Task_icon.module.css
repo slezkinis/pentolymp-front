@@ -49,3 +49,11 @@
     justify-content: space-between;
     padding-right: 3%
 }
+
+.solved {
+    color: rgb(92, 196, 82)
+}
+
+.unsolved {
+    color: black 
+}

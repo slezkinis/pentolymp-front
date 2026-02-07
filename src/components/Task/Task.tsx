@@ -75,7 +75,7 @@ export default function Task_details() {
       <div className={Styles.task_info}>
         <div className={`${Styles.level_icon} ${task.difficulty_level === 'Easy' ? Styles.easy : task.difficulty_level === 'Medium' ? Styles.medium : Styles.hard}`}>{task.difficulty_level === 'Easy' ? 'Легко' : task.difficulty_level === 'Medium' ? 'Средне' : 'Трудно'}</div>
         <div className={Styles.task_subject}>{task.subject} - {task.topic}</div>
-        <div className={Styles.task_status}>{task.is_solved ? '✓ Решена' : 'Не решена'}</div>
+        <div className={`${Styles.task_status} ${task.is_solved ? Styles.solved : Styles.unsolved}`}>{task.is_solved ? '✓ Решена' : 'Не решена'}</div>
       </div>
       <div className={Styles.task_text} dangerouslySetInnerHTML={{ __html: task.description }}></div>
       <div style={{marginTop: '1%', paddingLeft: '2%'}}>Ваш ответ</div>
